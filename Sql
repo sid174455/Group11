@@ -1,0 +1,9 @@
+CREATE TABLE customer (
+    username varchar(255),
+    password varchar(255),
+    retailer_id varchar(255)
+);
+
+insert into customer values('sid','sira','abc')
+
+select * from customer
