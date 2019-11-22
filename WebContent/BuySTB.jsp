@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+You bought STB with MAC ID ${stb_ser_id} and type ${stb_type} successfully.<br><br>
 <form method="get" action="MyServlet">
-	<input type="hidden" name="form" value="login"></input>
-	Enter username : <input type="text" name="uname"/><br>		
-	Enter password : <input type="text" name="pwd"/><br>
-	<p>${message}</p>
-	<input type="submit" value="submit">		
-	</form>
+	<input type="hidden" name="form" value="custHomepage"></input>
+	<input type="submit" value="Go to your homepage">
 </body>
 </html>

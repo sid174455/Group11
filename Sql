@@ -1,9 +1,171 @@
 CREATE TABLE customer (
-    username varchar(255),
-    password varchar(255),
-    retailer_id varchar(255)
+c_id NUMBER(5) UNIQUE,
+c_name VARCHAR(255),
+password VARCHAR(255),
+retailer_id NUMBER(5)
 );
 
-insert into customer values('sid','sira','abc')
+insert into customer values(1,'Swap','tcs1',99);
+insert into customer values(2,'Sid','tcs1',99);
+insert into customer values(3,'Hemant','tcs1',99);
+insert into customer values(4,'DD','tcs2',99);
+insert into customer values(5,'Nihal','tcs2',99);
+insert into customer values(6,'Vrushika','tcs2',98);
+insert into customer values(7,'Panchal','tcs3',98);
+insert into customer values(8,'Hooda','tcs3',98);
 
-select * from customer
+select * from customer;
+
+
+CREATE TABLE retailer (
+retailer_id NUMBER(5),
+rname VARCHAR(255),
+c_id NUMBER(5),
+c_name VARCHAR(255),
+stb_ser_id NUMBER(5) UNIQUE,
+cust_charge NUMBER(10)
+);
+
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,500, NULL);
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,501, NULL);
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,502, NULL);
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,503, NULL);
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,504, NULL);
+insert into retailer values(98,'ABC Retailer',NULL,NULL,505, NULL);
+insert into retailer values(98,'ABC Retailer',NULL,NULL,506, NULL);
+insert into retailer values(98,'ABC Retailer',NULL,NULL,507, NULL);
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,508, NULL);
+insert into retailer values(99,'Xfinity Retailer',NULL,NULL,509, NULL);
+
+Select * from retailer;
+
+
+
+CREATE TABLE stb (
+stb_ser_id NUMBER(5),
+stb_mac_id NUMBER(5),
+stb_type VARCHAR(255),
+status VARCHAR(255)
+);
+
+insert into stb values(500, 900, 'Standard', NULL);
+insert into stb values(501, 901, 'HD', NULL);
+insert into stb values(502, 902, 'HD+', NULL);
+insert into stb values(503, 903, 'IPTV', NULL);
+insert into stb values(504, 904, 'Standard', NULL);
+insert into stb values(505, 905, 'HD', NULL);
+insert into stb values(506, 906, 'HD+', NULL);
+insert into stb values(507, 907, 'IPTV', NULL);
+insert into stb values(508, 908, 'Standard', NULL);
+insert into stb values(509, 909, 'HD', NULL);
+
+select * from stb;
+
+
+
+CREATE TABLE stb_type (
+stb_type VARCHAR (255),
+stb_price NUMBER(5),
+stb_inst_price NUMBER(5),
+stb_deposit NUMBER(5),
+stb_discount NUMBER(5),
+stb_features VARCHAR(255),
+stb_dimensions VARCHAR(255),
+upgradation_charges NUMBER(5)
+);
+
+insert into stb_type values('Standard', 100, 20, 30, 5, '480p','10*10*4',0);
+insert into stb_type values('HD', 125, 25, 35, 4, '720p','10*10*3',5);
+insert into stb_type values('HD+', 130, 30, 35, 3, '1080p','10*5*3',10);
+insert into stb_type values('IPTV', 140, 40, 50, 6, '1080p','8*5*3',15);
+
+Select * from stb_type;
+
+
+
+CREATE TABLE stb_package(
+stb_type VARCHAR (255),
+stb_package_name VARCHAR (255)
+)
+
+insert into stb_package values('Standard','News');
+insert into stb_package values('Standard','Entertainment');
+insert into stb_package values('HD','Sports');
+insert into stb_package values('HD','Kids');
+insert into stb_package values('HD+','Netflix');
+insert into stb_package values('HD+','Prime');
+insert into stb_package values('IPTV','Premium');
+insert into stb_package values('IPTV','Unlimited');
+
+select * from stb_package;
+
+
+CREATE TABLE package_details(
+stb_package_name VARCHAR (255),
+ch_name VARCHAR(255),
+ch_cost NUMBER(10)
+);
+
+insert into package_details values('Default','DD National',0);
+insert into package_details values('Default','DD Sports',0);
+insert into package_details values('News','Fox News',3);
+insert into package_details values('News','CNN News',3);
+insert into package_details values('Entertainment','MTV',4);
+insert into package_details values('Entertainment','CNBC',4);
+insert into package_details values('Sports','ESPN',4);
+insert into package_details values('Sports','AXN',4);
+insert into package_details values('Kids','Nick',4);
+insert into package_details values('Kids','Cartoon Net',4);
+insert into package_details values('Netflix','Netflix OG',4);
+insert into package_details values('Netflix','WB Shows',4);
+insert into package_details values('Prime','Prime OG',4);
+insert into package_details values('Prime','Hulu Combo',4);
+insert into package_details values('Premium','Netflix Amz Combo',7);
+insert into package_details values('Premium','HBO',7);
+insert into package_details values('Unlimited','All Channels',8);
+insert into package_details values('Unlimited','Apple TV',8);
+
+select * from package_details;
+
+
+
+CREATE TABLE package_purchased (
+c_id NUMBER(5),
+c_name VARCHAR(255),
+stb_type VARCHAR(255),
+stb_package_name VARCHAR(255),
+pack_cost NUMBER(5),
+other_charges NUMBER(5),
+tax NUMBER(5),
+Total_amount NUMBER(10),
+Package_purch_date DATE
+);
+
+select * from package_purchased;
+
+
+
+CREATE TABLE stb_purchased(
+c_name VARCHAR(255),
+stb_type VARCHAR (255),
+stb_mac_id NUMBER(5),
+stb_ser_id NUMBER(5),
+stb_price NUMBER(5),
+stb_inst_price NUMBER(5),
+stb_deposit NUMBER(5),
+stb_discount NUMBER(5),
+tax NUMBER(5),
+amount_payable NUMBER(5)
+);
+
+select * from stb_purchased;
+
+
+drop table customer;
+drop table retailer;
+drop table stb;
+drop table stb_type;
+drop table stb_package;
+drop table package_details;
+drop table package_purchased;
+drop table stb_purchased;

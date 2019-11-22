@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="get" action="MyServlet">
-	<input type="hidden" name="form" value="login"></input>
-	Enter username : <input type="text" name="uname"/><br>		
-	Enter password : <input type="text" name="pwd"/><br>
-	<p>${message}</p>
-	<input type="submit" value="submit">		
-	</form>
+Hi ${stb_type} 
 </body>
 </html>

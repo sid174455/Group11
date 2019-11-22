@@ -1,11 +1,15 @@
 package beans;
 
+import java.util.*;
+
 public class CustomerBean {
 	
 	private String username;
     private String password;
-    private String retailer_id;
     public boolean valid;
+    private String c_name;
+    private List stb_type;
+    private List stb_ser_id;
     
 	public String getUsername() {
 		return username;
@@ -25,11 +29,23 @@ public class CustomerBean {
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
-	public String getRetailer_id() {
-		return retailer_id;
+	public String getC_name() {
+		return c_name;
 	}
-	public void setRetailer_id(String retailer_id) {
-		this.retailer_id = retailer_id;
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
 	}
-
+	public List getStb_type() {
+		return stb_type;
+	}
+	public void setStb_type(List stb_type) {
+		this.stb_type = stb_type;
+	}
+	public List getStb_ser_id() {
+		return stb_ser_id;
+	}
+	public void setStb_ser_id(List stb_ser_id) {
+		this.stb_ser_id = stb_ser_id;
+	}
+	
 }
